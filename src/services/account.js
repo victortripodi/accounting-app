@@ -1,4 +1,4 @@
-import { serverUrl } from "../../utils/constants"
+import { serverUrl } from "../utils/constants"
 
 export const fetchAccounts = async (accountType) => {
 
