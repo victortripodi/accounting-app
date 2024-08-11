@@ -93,10 +93,10 @@ const Dashboard = () => {
         alignItems: 'center'
       }}>
         <div style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Text size="large" weight="bold"> Welcome back!</Text>
-        <Text size="medium" weight="medium"> Take a look to your data </Text>
+        <Text size="large" weight="bold"> Welcome!</Text>
+        <Text size="medium" weight="medium"> Take a look at your data </Text>
           <Text weight="medium">
-            To start adding more info to your reports navigate to accounting and invoice</Text>
+          Take a look at your data! To start adding insights to your reports, navigate to the Sales and Expenses modules. </Text>
         </div>
         {chartData.length &&
           <div>
