@@ -100,10 +100,10 @@ const cardStyle = {
   transition: 'transform 0.2s, box-shadow 0.2s',
 };
 
-const cardHoverStyle = {
-  transform: 'scale(1.05)',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-};
+// const cardHoverStyle = {
+//   transform: 'scale(1.05)',
+//   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+// };
 
 // const style = `
 //   .card:hover {

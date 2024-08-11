@@ -44,7 +44,7 @@ const JournalList = () => {
     } catch (error) {
       setError('Error deleting journal.');
     }
-  }, [allData, filteredData]);
+  }, [allData, filteredData, token]);
 
 
 
