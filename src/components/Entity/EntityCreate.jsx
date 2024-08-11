@@ -61,7 +61,7 @@ const EntityCreate = () => {
     } catch (error) {
       console.error('Error saving entity:', error);
     }
-  }, [])
+  }, [type, name, ABN, email, address, postcode, token])
 
   return (
     <div className='container'>

@@ -12,7 +12,6 @@
     "@atlaskit/heading": "^2.4.4",
     "@atlaskit/link": "^1.0.3",
     "@atlaskit/menu": "^2.8.1",
-    "@atlaskit/modal-dialog": "^12.14.9",
     "@atlaskit/primitives": "^12.0.0",
     "@atlaskit/radio": "^6.4.1",
     "@atlaskit/section-message": "^6.5.10",
@@ -22,7 +21,6 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "ag-charts-react": "^10.1.0",
     "react": "^18.3.1",
     "react-charts": "^3.0.0-beta.57",
     "react-dom": "^18.3.1",
@@ -55,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }

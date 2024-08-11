@@ -105,11 +105,11 @@ const cardHoverStyle = {
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
 };
 
-const style = `
-  .card:hover {
-    transform: ${cardHoverStyle.transform};
-    box-shadow: ${cardHoverStyle.boxShadow};
-  }
-`;
+// const style = `
+//   .card:hover {
+//     transform: ${cardHoverStyle.transform};
+//     box-shadow: ${cardHoverStyle.boxShadow};
+//   }
+// `;
 
 export default Help;

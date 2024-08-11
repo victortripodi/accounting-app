@@ -40,7 +40,7 @@ const SignUpPage = () => {
           } catch (error) {
             console.error('Error saving journal:', error);
           }
-    }, [user])
+    }, [user, navigate, setToken])
 
     if (!isCreatingCompany) {
         return <SignUp

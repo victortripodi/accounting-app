@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useAuth } from "../provider/authProvider";
 import { ProtectedRoute } from "./ProtectedRoute";
 import LogIn from '../components/LogIn';
 import SignUp from '../components/SignUp';
@@ -18,8 +17,6 @@ import Help from "../components/Help";
 
 
 const Routes = () => {
-  const { token } = useAuth();
-
   // Define public routes accessible to all users
   const routesForPublic = [
     {
@@ -30,10 +27,6 @@ const Routes = () => {
       path: "/sign-up",
       element: <SignUp />,
     },
-    // {
-    //   path: "/help",
-    //   element: <Help />,
-    // },
   ];
 
   // Define routes accessible only to authenticated users

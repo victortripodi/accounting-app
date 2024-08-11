@@ -9,7 +9,6 @@ import { useAuth } from '../../provider/authProvider';
 import { serverUrl } from "../../utils/constants"
 import EmptyState from "../EmptyState"
 
-
 const EntityList = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
@@ -55,7 +54,7 @@ const EntityList = () => {
     } else {
       setFilteredData(allData);
     }
-  }, [entityType]);
+  }, [entityType, allData]);
 
   const head = useMemo(() => ({
     cells: [
@@ -80,6 +79,7 @@ const EntityList = () => {
         { key: 'postcode', content: entity.postcode },
       ]
     })), [filteredData]);
+
   if (tableContent.length === 0 && !error) {
     return (
       <EmptyState
@@ -88,8 +88,6 @@ const EntityList = () => {
       />
     );
   }
-
-
 
   return (
     <div className='container'>

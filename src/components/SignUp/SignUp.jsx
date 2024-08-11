@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Label, HelperMessage } from '@atlaskit/form';
 import Textfield from '@atlaskit/textfield';
 import Button from '@atlaskit/button/new';
@@ -10,7 +9,6 @@ const SignUp = ({ onSubmit }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const handleSignUp = (e) => {
     e.preventDefault();

@@ -48,7 +48,7 @@ const SalesView = () => {
     };
 
     fetchSale();
-  }, []);
+  }, [saleId, token]);
 
   if (!saleId) {
     return <div>No Sale to display</div>;

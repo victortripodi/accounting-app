@@ -112,7 +112,7 @@ const JournalList = () => {
           </>
         }
       ]
-    })), [filteredData]);
+    })), [filteredData, navigate, handleDelete]);
 
   if (tableContent.length === 0 && !error) {
     return (

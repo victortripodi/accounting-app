@@ -9,7 +9,7 @@ import '../styles/Forms.css'
 
 const Dashboard = () => {
   const { token } = useAuth();
-  const [error, setError] = useState('');
+  const [, setError] = useState('');
   const [chartData, setChartData] = useState([])
 
   useEffect(() => {

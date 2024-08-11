@@ -41,7 +41,7 @@ const LogIn = () => {
     // Clear form fields
     setEmail('');
     setPassword('');
-  }, [email, password]);
+  }, [email, password, setToken, navigate]);
 
   return (
     <div className="signupcontainer">

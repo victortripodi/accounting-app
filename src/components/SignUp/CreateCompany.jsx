@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Label } from '@atlaskit/form';
 import Textfield from '@atlaskit/textfield';
 import Button from '@atlaskit/button/new';
-import { useNavigate } from 'react-router-dom';
 
 
 const CreateCompany = ({ onSuccess }) => {
@@ -11,7 +10,6 @@ const CreateCompany = ({ onSuccess }) => {
   const [address, setAddress] = useState('');
   const [postcode, setPostcode] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
 
   const handleCreateCompany = (e) => {
@@ -25,17 +23,7 @@ const CreateCompany = ({ onSuccess }) => {
     const company = { companyName, abn, address, postcode };
     console.log(company);
 
-    // Call onSuccess to navigate to the dashboard and pass the company name
     onSuccess(company);
-    // navigate('/dashboard');
-
-
-    // // Clear form fields
-    // setCompanyName('');
-    // setAbn('');
-    // setAddress('');
-    // setState('');
-    // setError('');
   };
 
   return (
