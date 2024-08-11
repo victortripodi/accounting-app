@@ -486,7 +486,7 @@
 
 "@atlaskit/spinner@^16.2.0":
   version "16.2.0"
-  resolved "https://registry.npmjs.org/@atlaskit/spinner/-/spinner-16.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/@atlaskit/spinner/-/spinner-16.2.0.tgz#09258a94be591ae9f5026f0289888a317504742e"
   integrity sha512-g0JqArmzzqPO7Vhk8ZqUadtNDkgOs5dIrE/gxbvdOdEIQylCl/WSA/JkMSaYBa0SIoQLvs/E4C7ei77QqR38lg==
   dependencies:
     "@atlaskit/interaction-context" "^2.1.0"

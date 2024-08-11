@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import Spinner from '@atlaskit/spinner';
 import { Label } from '@atlaskit/form';
 import { useNavigate } from 'react-router-dom';
 import Button from '@atlaskit/button/new';
@@ -20,10 +21,12 @@ const SalesList = () => {
   const [error, setError] = useState('');
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchSales = async () => {
       try {
+        setLoading(true)
         const response = await fetch(`${serverUrl}/sales`, {
           method: "GET",
           headers: {
@@ -44,6 +47,7 @@ const SalesList = () => {
       } catch (error) {
         setError('Error fetching journals.');
       }
+      setLoading(false)
     };
 
     fetchSales();
@@ -88,6 +92,13 @@ const SalesList = () => {
         }
       ]
     })), [filteredData, navigate])
+
+
+  if (isLoading) {
+    return <div className='loading'>
+      <Spinner size={"large"} label="Loading" />
+    </div>
+  }
 
   if (tableContent.length === 0 && !error) {
     return (
