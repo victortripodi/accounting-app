@@ -1,0 +1,33 @@
+.date-picker {
+  width: 130px;
+}
+
+.container {
+  padding: 20px;
+}
+
+.heading {
+  padding: 20px 0px
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.total-footer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0px;
+}
+
+.list-date-header {
+  padding: 20px 0px;
+  display: flex
+}
+
+.list-footer {
+  display: flex;
+  justify-content: space-between;
+}
