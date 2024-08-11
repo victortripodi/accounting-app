@@ -40,7 +40,7 @@ const SaleCreate = () => {
       }));
       setCustomers(options);
     } catch (error) {
-      setErrors('Error fetching accounts.');
+      setErrors('Error fetching customers.');
     }
   }, [token]);
 
@@ -184,7 +184,7 @@ const SaleCreate = () => {
         <Button onClick={handleSaveSales} appearance="primary">Save Sale</Button></div>
       {isSaleSaved && (
         <SectionMessage appearance="success">
-          <p>The sale has been saved.</p>
+          <Text>The sale has been saved.</Text>
         </SectionMessage>
       )}
     </div>
