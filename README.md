@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+### Links
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- **Deployed Website:** [vTax Accounting App](https://accountingvt.netlify.app/)
 
-## Available Scripts
+- **GitHub Repositories:**
+  - **Frontend:** [Frontend Repository](https://github.com/victortripodi/accounting-app.git)
+  - **Backend:** [Backend Repository](https://github.com/victortripodi/accounting-server.git)
 
-In the project directory, you can run:
+- **Part A:**
+[Please refer to file saved in docs folder]
 
-### `npm start`
+# vTax Accounting Application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+vTax is an accounting software application designed for small businesses, offering an intuitive user interface and essential accounting features. The application is built using the MERN (MongoDB, Express, React, Node.js) stack, with a focus on creating a user-friendly experience and providing essential accounting functionalities.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Management & Collaboration
 
-### `npm test`
+Even though I worked alone on this project, I simulated a team environment by splitting the work into two roles: frontend and backend development. I used the following methodologies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Project Management**: Agile methodology with iterative development cycles.
+- **Task Delegation**: Tasks were divided as if managed between two team members, focusing on either the frontend or backend.
 
-### `npm run build`
+## User Interface
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The user interface is designed to be intuitive and user-friendly, catering to individuals with basic accounting knowledge. It features easy navigation and a clean layout, enhancing the user experience.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## User Testing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Development Environment
 
-### `npm run eject`
+Extensive user testing was performed in the development environment to ensure functionality and performance. Feedback was gathered and used to refine the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Production Environment
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application was also tested in the production environment to validate its behavior in a real-world setting with actual colleagues who have experience using other software and family friends without any knowledge. This included testing on different devices and browsers to ensure compatibility.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Testing Framework
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Jest**: Utilized for unit and integration testing, particularly for the Express.js backend, ensuring the reliability and correctness of the codebase.
 
-## Learn More
+## Help
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app includes a help section that informs the user how to navigate and use the application.
