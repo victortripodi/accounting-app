@@ -41,7 +41,7 @@ const JournalView = () => {
     };
 
     fetchJournal();
-  }, [])
+  }, [journalId, token])
 
   if (!journalId) {
     return <div>No journal to display</div>;

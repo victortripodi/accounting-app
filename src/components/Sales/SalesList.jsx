@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Label } from '@atlaskit/form';
 import { useNavigate } from 'react-router-dom';
 import Button from '@atlaskit/button/new';
@@ -87,7 +87,7 @@ const SalesList = () => {
           </>
         }
       ]
-    })), [filteredData])
+    })), [filteredData, navigate])
 
   if (tableContent.length === 0 && !error) {
     return (

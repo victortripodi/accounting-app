@@ -42,7 +42,7 @@ const SaleCreate = () => {
     } catch (error) {
       setErrors('Error fetching accounts.');
     }
-  }, []);
+  }, [token]);
 
   const getAccounts = useCallback(async () => {
     try {
@@ -56,7 +56,7 @@ const SaleCreate = () => {
   useEffect(() => {
     getCustomers()
     getAccounts()
-  }, [getCustomers])
+  }, [getCustomers, getAccounts])
 
   const [isSaleSaved, setIsSaleSaved] = useState(false)
 
@@ -98,7 +98,7 @@ const SaleCreate = () => {
     } catch (error) {
       console.error('Error saving entity:', error);
     }
-  }, [])
+  }, [amount, category, customer, date, description, dueDate, tax, token])
 
   const taxResult = useMemo(() => tax === '10%' ? amount * 0.1 : 0, [tax, amount])
   return (
@@ -110,6 +110,8 @@ const SaleCreate = () => {
           <Button onClick={() => navigate('/entity/list')}>View customers</Button>
         </div>
       </div>
+      {error && <SectionMessage appearance="error"><p>{error}</p></SectionMessage>} {/* Display the error if it exists */}
+
       <div style={{ display: 'flex' }}>
         <div style={{ marginRight: '10px' }}>
           <Label>Issue Date</Label>
