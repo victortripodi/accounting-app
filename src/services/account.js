@@ -1,5 +1,4 @@
-
-const serverUrl = "http://localhost:3001";
+import { serverUrl } from "../../utils/constants"
 
 export const fetchAccounts = async (accountType) => {
 
