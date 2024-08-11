@@ -36,6 +36,10 @@ const Routes = () => {
       element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
       children: [
         {
+          path: "/",
+          element: <Dashboard />,
+        },
+        {
           path: "/dashboard",
           element: <Dashboard />,
         },
