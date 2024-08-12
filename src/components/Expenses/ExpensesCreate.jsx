@@ -14,14 +14,14 @@ import { fetchEntities } from "../../services/entities";
 import { serverUrl } from "../../utils/constants";
 import '../../styles/Forms.css';
 
-const SaleCreate = () => {
+const ExpenseCreate = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
 
-  const [customers, setCustomers] = useState();
+  const [vendors, setVendors] = useState();
   const [accountOptions, setAccountOptions] = useState([]);
 
-  const [customer, selectCustomer] = useState([]);
+  const [vendor, selectVendor] = useState([]);
   const [invoiceNumber, setInvoiceNumber] = useState();
   const [date, setDate] = useState();
   const [dueDate, setDueDate] = useState();
@@ -31,22 +31,22 @@ const SaleCreate = () => {
   const [amount, setAmount] = useState(0);
   const [error, setErrors] = useState();
 
-  const getCustomers = useCallback(async () => {
+  const getVendors = useCallback(async () => {
     try {
-      const result = await fetchEntities('customer', token);
+      const result = await fetchEntities('vendor', token);
       const options = result.map(entity => ({
         label: entity.name,
         value: entity._id
       }));
-      setCustomers(options);
+      setVendors(options);
     } catch (error) {
-      setErrors('Error fetching customers.');
+      setErrors('Error fetching vendors.');
     }
   }, [token]);
 
   const getAccounts = useCallback(async () => {
     try {
-      const result = await fetchAccounts('revenue');
+      const result = await fetchAccounts('expense');
       setAccountOptions(result);
     } catch (error) {
       setErrors('Error fetching accounts.');
@@ -54,20 +54,20 @@ const SaleCreate = () => {
   }, []);
 
   useEffect(() => {
-    getCustomers();
+    getVendors();
     getAccounts();
-  }, [getCustomers, getAccounts]);
+  }, [getVendors, getAccounts]);
 
-  const [isSaleSaved, setIsSaleSaved] = useState(false);
+  const [isExpenseSaved, setIsExpenseSaved] = useState(false);
 
-  const handleSaveSales = useCallback(async () => {
+  const handleSaveExpenses = useCallback(async () => {
     if (!date || !dueDate) {
       setErrors('Please select both an issue date and a due date.');
       return;
     }
 
-    const sale = {
-      customer,
+    const expense = {
+      vendor,
       date,
       dueDate,
       description,
@@ -77,21 +77,21 @@ const SaleCreate = () => {
     };
 
     try {
-      const response = await fetch(`${serverUrl}/sales`, {
+      const response = await fetch(`${serverUrl}/expenses`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', "Authorization": token },
-        body: JSON.stringify(sale),
+        body: JSON.stringify(expense),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to save sale');
+        throw new Error('Failed to save expense');
       }
 
       const data = await response.json();
-      console.log('Sale saved successfully:', data);
-      setIsSaleSaved(true);
+      console.log('Expense saved successfully:', data);
+      setIsExpenseSaved(true);
       // Clean data
-      selectCustomer('');
+      selectVendor('');
       setDate('');
       setDueDate('');
       setDescription('');
@@ -101,9 +101,9 @@ const SaleCreate = () => {
       setErrors('');
     } catch (error) {
       console.error('Error saving entity:', error);
-      setErrors('An error occurred while saving the sale.');
+      setErrors('An error occurred while saving the expense.');
     }
-  }, [amount, category, customer, date, description, dueDate, tax, token]);
+  }, [amount, category, vendor, date, description, dueDate, tax, token]);
 
   const taxResult = useMemo(() => tax === '10%' ? amount * 0.1 : 0, [tax, amount]);
 
@@ -112,8 +112,8 @@ const SaleCreate = () => {
       <div className='header'>
         <Heading size="large">Create Invoice</Heading>
         <div>
-          <Button appearance='primary' onClick={() => navigate('/entity/create')}>Create customer</Button>
-          <Button onClick={() => navigate('/entity/list')}>View customers</Button>
+          <Button appearance='primary' onClick={() => navigate('/entity/create')}>Create vendor</Button>
+          <Button onClick={() => navigate('/entity/list')}>View vendors</Button>
         </div>
       </div>
       {error && <SectionMessage appearance="error"><p>{error}</p></SectionMessage>}
@@ -132,11 +132,11 @@ const SaleCreate = () => {
           />
         </div>
       </div>
-      <Label>Customer</Label>
+      <Label>Vendor</Label>
       <Select
-        options={customers}
-        onChange={(selectedOption) => selectCustomer(selectedOption.value)}
-        noOptionsMessage={() => "Please create a customer"}
+        options={vendors}
+        onChange={(selectedOption) => selectVendor(selectedOption.value)}
+        noOptionsMessage={() => "Please create a vendor"}
       />
       <Label>Invoice number</Label>
       <Textfield
@@ -186,16 +186,16 @@ const SaleCreate = () => {
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Button onClick={() => navigate('/sales/list')}>Back to list</Button>
-        <Button onClick={handleSaveSales} appearance="primary">Save Sale</Button>
+        <Button onClick={() => navigate('/expenses/list')}>Back to list</Button>
+        <Button onClick={handleSaveExpenses} appearance="primary">Save Expense</Button>
       </div>
-      {isSaleSaved && (
+      {isExpenseSaved && (
         <SectionMessage appearance="success">
-          <Text>The sale has been saved.</Text>
+          <Text>The expense has been saved.</Text>
         </SectionMessage>
       )}
     </div>
   );
 };
 
-export default SaleCreate;
+export default ExpenseCreate;

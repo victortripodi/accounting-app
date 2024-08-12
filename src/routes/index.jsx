@@ -11,6 +11,9 @@ import EntityList from "../components/Entity/EntityList";
 import SalesCreate from '../components/Sales/SalesCreate';
 import SalesView from "../components/Sales/SalesView";
 import SalesList from "../components/Sales/SalesList";
+import ExpensesCreate from '../components/Expenses/ExpensesCreate';
+import ExpensesView from "../components/Expenses/ExpensesView";
+import ExpensesList from "../components/Expenses/ExpensesList";
 import ChartOfAccountsView from "../components/ChartOfAccountsView";
 import Help from "../components/Help";
 
@@ -74,6 +77,18 @@ const Routes = () => {
         {
           path: "/sales/list",
           element: <SalesList />,
+        },
+        {
+          path: "/expenses/create",
+          element: <ExpensesCreate />,
+        },
+        {
+          path: "/expenses/view/:expenseId",
+          element: <ExpensesView />,
+        },
+        {
+          path: "/expenses/list",
+          element: <ExpensesList />,
         },
         {
           path: "/viewchartofaccounts",

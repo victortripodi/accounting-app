@@ -30,7 +30,7 @@ const Header = ({ companyName }) => {
         <DropdownItemGroup>
           <DropdownItem onClick={() => navigate('/dashboard')}>Dashboard</DropdownItem>
           <DropdownItem onClick={() => navigate('/sales/list')}>Sales</DropdownItem>
-          <DropdownItem onClick={() => navigate('/sales/list')}>Expenses</DropdownItem>
+          <DropdownItem onClick={() => navigate('/expenses/list')}>Expenses</DropdownItem>
           <DropdownItem onClick={() => navigate('/journal/list')}>Accounting</DropdownItem>
         </DropdownItemGroup>
       </DropdownMenu>
@@ -48,7 +48,7 @@ const Header = ({ companyName }) => {
           : [
             <PrimaryButton onClick={() => navigate('/dashboard')}>Dashboard</PrimaryButton>,
             <PrimaryButton onClick={() => navigate('/sales/list')}>Sales</PrimaryButton>,
-            <PrimaryButton onClick={() => navigate('/sales/list')}>Expenses</PrimaryButton>,
+            <PrimaryButton onClick={() => navigate('/expenses/list')}>Expenses</PrimaryButton>,
             <PrimaryButton onClick={() => navigate('/journal/list')}>Accounting</PrimaryButton>,
           ]
       }

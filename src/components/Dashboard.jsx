@@ -1,16 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Text } from '@atlaskit/primitives';
-import { Chart } from 'react-charts'
+import { Chart } from 'react-charts';
 import { useAuth } from '../provider/authProvider';
-import { serverUrl } from "../utils/constants"
+import { serverUrl } from "../utils/constants";
 import Heading from '@atlaskit/heading';
-import ResizableBox from "./ResizableBox"
-import '../styles/Forms.css'
+import ResizableBox from "./ResizableBox";
+import '../styles/Forms.css';
 
 const Dashboard = () => {
   const { token } = useAuth();
   const [, setError] = useState('');
-  const [chartData, setChartData] = useState([])
+  const [chartDataRevenue, setChartDataRevenue] = useState([]);
+  const [chartDataExpenses, setChartDataExpenses] = useState([]);
 
   useEffect(() => {
     const fetchSales = async () => {
@@ -25,17 +26,17 @@ const Dashboard = () => {
 
         const fetchedData = await response.json();
 
-        const monthData = {}
+        const monthData = {};
         fetchedData.result.forEach((sale) => {
-          const date = new Date(sale.date)
+          const date = new Date(sale.date);
           const year = date.getFullYear();
           if (year === 2024) {
             const month = date.toLocaleString('default', { month: 'long' });
-            monthData[month] = (monthData[month] || 0) + sale.amount
+            monthData[month] = (monthData[month] || 0) + sale.amount;
           }
-        })
+        });
 
-        let chartDataArray = []
+        let chartDataArrayRevenue = [];
 
         for (const [key, value] of Object.entries(monthData)) {
           const item = {
@@ -46,15 +47,13 @@ const Dashboard = () => {
                 secondary: value
               }
             ]
-          }
+          };
 
-          chartDataArray = [...chartDataArray, item]
+          chartDataArrayRevenue = [...chartDataArrayRevenue, item];
         }
 
-        setChartData(chartDataArray)
-        if (response.ok) {
-          setError('');
-        } else {
+        setChartDataRevenue(chartDataArrayRevenue);
+        if (!response.ok) {
           setError('Failed to fetch sales.');
         }
       } catch (error) {
@@ -62,7 +61,55 @@ const Dashboard = () => {
       }
     };
 
+    const fetchExpenses = async () => {
+      try {
+        const response = await fetch(`${serverUrl}/expenses`, {
+          method: "GET",
+          headers: {
+            'Content-Type': 'application/json',
+            "Authorization": token
+          }
+        });
+
+        const fetchedData = await response.json();
+
+        const monthData = {};
+        fetchedData.result.forEach((expense) => {
+          const date = new Date(expense.date);
+          const year = date.getFullYear();
+          if (year === 2024) {
+            const month = date.toLocaleString('default', { month: 'long' });
+            monthData[month] = (monthData[month] || 0) + expense.amount;
+          }
+        });
+
+        let chartDataArrayExpenses = [];
+
+        for (const [key, value] of Object.entries(monthData)) {
+          const item = {
+            label: key,
+            data: [
+              {
+                primary: key,
+                secondary: value
+              }
+            ]
+          };
+
+          chartDataArrayExpenses = [...chartDataArrayExpenses, item];
+        }
+
+        setChartDataExpenses(chartDataArrayExpenses);
+        if (!response.ok) {
+          setError('Failed to fetch expenses.');
+        }
+      } catch (error) {
+        setError('Error fetching expenses.');
+      }
+    };
+
     fetchSales();
+    fetchExpenses();
   }, [token]);
 
   const primaryAxis = useMemo(
@@ -70,7 +117,7 @@ const Dashboard = () => {
       getValue: datum => datum.primary,
     }),
     []
-  )
+  );
 
   const secondaryAxes = useMemo(
     () => [
@@ -79,7 +126,7 @@ const Dashboard = () => {
       },
     ],
     []
-  )
+  );
 
   return (
     <div className='container'>
@@ -93,12 +140,13 @@ const Dashboard = () => {
         alignItems: 'center'
       }}>
         <div style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Text size="large" weight="bold"> Welcome!</Text>
-        <Text size="medium" weight="medium"> Take a look at your data </Text>
+          <Text size="large" weight="bold"> Welcome!</Text>
+          <Text size="medium" weight="medium"> Take a look at your data </Text>
           <Text weight="medium">
-          Take a look at your data! To start adding insights to your reports, navigate to the Sales and Expenses modules. </Text>
+            To start adding insights to your reports, navigate to the Sales and Expenses modules.
+          </Text>
         </div>
-        {chartData.length &&
+        {chartDataRevenue.length > 0 &&
           <div>
             <div className='heading'>
               <Heading size="small">Monthly Sales</Heading>
@@ -106,7 +154,7 @@ const Dashboard = () => {
             <ResizableBox>
               <Chart
                 options={{
-                  data: chartData,
+                  data: chartDataRevenue,
                   primaryAxis,
                   secondaryAxes,
                 }}
@@ -114,7 +162,7 @@ const Dashboard = () => {
             </ResizableBox>
           </div>
         }
-        {chartData.length &&
+        {chartDataExpenses.length > 0 &&
           <div>
             <div style={{ marginTop: '20px' }} className='heading'>
               <Heading size="small">Monthly Expenses</Heading>
@@ -122,7 +170,7 @@ const Dashboard = () => {
             <ResizableBox>
               <Chart
                 options={{
-                  data: chartData,
+                  data: chartDataExpenses,
                   primaryAxis,
                   secondaryAxes,
                 }}
